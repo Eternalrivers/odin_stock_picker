@@ -1,10 +1,10 @@
-str = [17,6,6,9,15,8,6,1,11]
+str = [17,3,6,9,15,8,6,1,10]
 def compare_price(a, b) 
   a <=> b
 end
 
 def stock_picker(str)
-  b = str
+  b = str.reduce(Array.new) {|total, num| total <<  num}
   a = 0
   arr = []
 

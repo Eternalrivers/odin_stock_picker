@@ -1,33 +1,32 @@
 str = [17,3,6,9,15,8,6,1,10]
-def compare_price(a, b) 
+
+def compare_profit(a, b) 
   a <=> b
 end
 
-def stock_picker(str)
-  b = str.reduce(Array.new) {|total, num| total <<  num}
-  a = 0
-  arr = []
+def stock_picker(stock_prices)
+  new_stock_prices = stock_prices.reduce(Array.new) {|total, num| total <<  num}
+  profit = 0
+  best_profit_days = []
 
-  str.each_with_index do |num, index|
-    b.shift
+  stock_prices.each_with_index do |price, index|
+    new_stock_prices.shift
 
-    b.each_with_index do |price, b_index|
+    new_stock_prices.each_with_index do |current_price, b_index|
+      current_profit = current_price - price
+      compared_profit = compare_profit(profit, current_profit)
 
-      current_price = price - num
-
-      compared_price = compare_price(a, current_price)
-
-      case compared_price
+      case compared_profit
       when -1
-          a = current_price
+          profit = current_profit
           
-          arr.replace([index,(b_index + index + 1)])
+          best_profit_days.replace([index,(b_index + index + 1)])
       else
-          arr
+          best_profit_days
       end
     end
   end
-  p arr
+  p best_profit_days
 end
 
 stock_picker(str)

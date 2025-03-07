@@ -1,11 +1,6 @@
 str = [17,3,6,9,15,8,6,1,10]
 def compare_price(a, b) 
   case a <=> b
-  when -1
-      a = b
-  else
-      a
-  end
 end
 
 def stock_picker (str)
@@ -26,7 +21,14 @@ def stock_picker (str)
       p price
       p "This is a#{a}"
       a = compare_price(a, price)
+      case compared_price
+      when -1
+          a = current_price
+      else
+          arr
+      end
     end
+    
   i += 1
   p "Price is #{a}"
 end

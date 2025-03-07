@@ -1,3 +1,4 @@
+str = [17,3,6,9,15,8,6,1,10]
 def compare_price(a, b) 
   case a <=> b
   when -1
@@ -8,16 +9,27 @@ def compare_price(a, b)
 end
 
 def stock_picker (str)
+  i = 0
+  b = str
   a = 0
-  str.each do |num|
-    case a <=> num
-    when -1
-      a = num
-    else
-      a
+  while i <= b.length
+  
+   
+    current_price = b.shift
+    
+    p b.length
+    p b
+    p current_price
+
+    b.each do |num|
+      price = num - current_price
+      p price
+      p "This is a#{a}"
+      a = compare_price(a, price)
     end
-  end
-  p a
+  i += 1
+  p "Price is #{a}"
+end
 end
 
-
+stock_picker(str)
